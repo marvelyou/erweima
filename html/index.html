@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+	<title>登录</title>
+
+	<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
+
+</head>
+<body>
+	<div class="container bg-info">
+		<div id="main">
+
+			<ul class="nav nav-tabs">
+				<li role="presentation" id="pageOne" class="active"><a>起诉书</a></li>
+				<li role="presentation" id="pageTwo" class=""><a>二维码</a></li>
+			</ul>
+
+			<div id="qrcode"></div>
+
+			<h2 class="page-header text-center">起诉书</h2>
+			
+			<form class="form-horizontal" onsubmit="return false">
+				<fieldset>
+					<legend>原告</legend>
+					<div class="form-group">
+						<label for="pName" class="col-sm-2 control-label">姓名</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="pName" placeholder="姓名" required>
+						</div>
+						<label for="pSex" class="col-sm-2 control-label">性别</label>
+						<div class="col-sm-4">
+							<select id="pSex" class="form-control">
+					            <option selected>男</option>
+					            <option>女</option>
+					        </select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="pEthnic" class="col-sm-2 control-label">民族</label>
+						<div class="col-sm-4">
+							<select id="pEthnic" class="form-control">
+					             <option selected>汉族</option>
+					             <option>蒙古族</option>
+					             <option>回族</option>
+					             <option>藏族</option>
+					             <option>维吾尔族</option>
+					             <option>苗族</option>
+					             <option>彝族</option>
+					             <option>壮族</option>
+					             <option>布依族</option>
+					             <option>朝鲜族</option>
+					             <option>满族</option>
+					             <option>侗族</option>
+					             <option>瑶族</option>
+					             <option>白族</option>
+					             <option>土家族</option>
+					             <option>哈尼族</option>
+					             <option>哈萨克族</option>
+					             <option>傣族</option>
+					             <option>黎族</option>
+					             <option>僳僳族</option>
+					             <option>佤族</option>
+					             <option>畲族</option>
+					             <option>高山族</option>
+					             <option>拉祜族</option>
+					             <option>水族</option>
+					             <option>东乡族</option>
+					             <option>纳西族</option>
+					             <option>景颇族</option>
+					             <option>柯尔克孜族</option>
+					             <option>土族</option>
+					             <option>达斡尔族</option>
+					             <option>仫佬族</option>
+					             <option>羌族</option>
+					             <option>布朗族</option>
+					             <option>撒拉族</option>
+					             <option>毛难族</option>
+					             <option>仡佬族</option>
+					             <option>锡伯族</option>
+					             <option>阿昌族</option>
+					             <option>普米族</option>
+					             <option>塔吉克族</option>
+					             <option>怒族</option>
+					             <option>乌孜别克族</option>
+					             <option>俄罗斯族</option>
+					             <option>鄂温克族</option>
+					             <option>崩龙族</option>
+					             <option>保安族</option>
+					             <option>裕固族</option>
+					             <option>京族</option>
+					             <option>塔塔尔族</option>
+					             <option>独龙族</option>
+					             <option>鄂伦春族</option>
+					             <option>赫哲族</option>
+					             <option>门巴族</option>
+					             <option>珞巴族</option>
+					             <option>基诺族</option>
+					        </select>
+						</div>
+						<label for="pBirth" class="col-sm-2 control-label">出生日期</label>
+					    <div class="col-sm-4">
+							<input type="text" class="form-control" id="pBirth" placeholder="出生日期，例如：19871205" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="pIDNum" class="col-sm-2 control-label">身份证</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="pIDNum" placeholder="身份证号" required minlength="18" maxlength="18">
+						</div>
+						<label for="pPhone" class="col-sm-2 control-label">电话</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="pPhone" placeholder="联系电话" required maxlength="18">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="pAddress" class="col-sm-2 control-label">地址</label>
+						<div class="col-sm-10">
+							<textarea class="form-control" id="pAddress" placeholder="地址" required></textarea>
+						</div>
+					</div>
+				</fieldset>
+
+				<fieldset>
+					<legend>被告</legend>
+					<div class="form-group">
+						<label for="dName" class="col-sm-2 control-label">姓名</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="dName" placeholder="姓名" required>
+						</div>
+						<label for="dSex" class="col-sm-2 control-label">性别</label>
+						<div class="col-sm-4">
+							<select id="dSex" class="form-control">
+					            <option selected>男</option>
+					            <option>女</option>
+					        </select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="dEthnic" class="col-sm-2 control-label">民族</label>
+						<div class="col-sm-4">
+							<select id="dEthnic" class="form-control">
+					             <option selected>汉族</option>
+					             <option>蒙古族</option>
+					             <option>回族</option>
+					             <option>藏族</option>
+					             <option>维吾尔族</option>
+					             <option>苗族</option>
+					             <option>彝族</option>
+					             <option>壮族</option>
+					             <option>布依族</option>
+					             <option>朝鲜族</option>
+					             <option>满族</option>
+					             <option>侗族</option>
+					             <option>瑶族</option>
+					             <option>白族</option>
+					             <option>土家族</option>
+					             <option>哈尼族</option>
+					             <option>哈萨克族</option>
+					             <option>傣族</option>
+					             <option>黎族</option>
+					             <option>僳僳族</option>
+					             <option>佤族</option>
+					             <option>畲族</option>
+					             <option>高山族</option>
+					             <option>拉祜族</option>
+					             <option>水族</option>
+					             <option>东乡族</option>
+					             <option>纳西族</option>
+					             <option>景颇族</option>
+					             <option>柯尔克孜族</option>
+					             <option>土族</option>
+					             <option>达斡尔族</option>
+					             <option>仫佬族</option>
+					             <option>羌族</option>
+					             <option>布朗族</option>
+					             <option>撒拉族</option>
+					             <option>毛难族</option>
+					             <option>仡佬族</option>
+					             <option>锡伯族</option>
+					             <option>阿昌族</option>
+					             <option>普米族</option>
+					             <option>塔吉克族</option>
+					             <option>怒族</option>
+					             <option>乌孜别克族</option>
+					             <option>俄罗斯族</option>
+					             <option>鄂温克族</option>
+					             <option>崩龙族</option>
+					             <option>保安族</option>
+					             <option>裕固族</option>
+					             <option>京族</option>
+					             <option>塔塔尔族</option>
+					             <option>独龙族</option>
+					             <option>鄂伦春族</option>
+					             <option>赫哲族</option>
+					             <option>门巴族</option>
+					             <option>珞巴族</option>
+					             <option>基诺族</option>
+					        </select>
+						</div>
+						<label for="dBirth" class="col-sm-2 control-label">出生日期</label>
+					    <div class="col-sm-4">
+							<input type="text" class="form-control" id="dBirth" placeholder="出生日期，例如：19871205" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="dIDNum" class="col-sm-2 control-label">身份证</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="dIDNum" placeholder="身份证号" required minlength="18" maxlength="18">
+						</div>
+						<label for="dPhone" class="col-sm-2 control-label">电话</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="dPhone" placeholder="联系电话" required maxlength="18">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="dAddress" class="col-sm-2 control-label">地址</label>
+						<div class="col-sm-10">
+							<textarea class="form-control" id="dAddress" placeholder="地址" required></textarea>
+						</div>
+					</div>
+				</fieldset>
+
+				<fieldset>
+					<legend>诉讼请求</legend>
+					<div class="input-group-add"></div>
+				</fieldset>
+
+				<fieldset>
+					<legend>事实与理由</legend>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<textarea class="form-control" id="truthAndReason" placeholder="请陈述事实与理由..." required></textarea>	
+						</div>
+					</div>
+				</fieldset>
+
+				<fieldset>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<button type="submit" class="btn btn-success btn-block" id='generator'>提交</button>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+
+		</div>
+	</div>
+</body>
+	<script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../assets/js/inputGroup.js"></script>
+	<script type="text/javascript" src="../assets/js/jquery.qrcode.min.js"></script>
+
+	<script type="text/javascript">
+
+		self.par = null;
+
+		$(function() {
+
+            $('.input-group-add').initInputGroup({
+                'widget' : 'textarea',
+                'field': 'data',
+                'data' : ['']
+            });
+
+            $("form").submit(function(){
+
+        		keys = new Array('pName', 'pSex', 'pEthnic', 'pBirth', 'pIDNum', 'pPhone', 'pAddress',
+        				'dName', 'dSex', 'dEthnic', 'dBirth', 'dIDNum', 'dPhone', 'dAddress',
+        				'truthAndReason'
+        		);
+        		results = {};
+        		for (index in keys) {
+        			key = keys[index];
+        			val = $('#' + key).val();
+        			results[key] = val;
+        		};	
+				count = 0;
+        		$('.claims').each(function(){
+        			count += 1;
+        			results['claims' + count] = $(this).val();
+        		});
+
+        		self.par = JSON.stringify(results);
+        		jQuery('#qrcode').qrcode(utf16to8(self.par));
+        		$('#pageTwo').addClass('active');	
+    			$('#pageOne').removeClass('active');
+
+        		$('h2').hide();
+				$('form').hide();
+				$('#qrcode').show();
+        		// url = encodeURI(encodeURI('./erweima.html?par=' + strResults));
+        		// location.href = url;        		
+
+        	});	
+
+        	$('li').click(function(){
+        		id = $(this).attr('id');
+        		if ($(this).attr('class') == '') {
+	        		if (id == 'pageOne') {
+	        			$('#pageOne').addClass('active');
+	        			$('#pageTwo').removeClass('active');
+
+	        			$('h2').show();
+        				$('form').show();
+        				$('#qrcode').hide();
+	        		}
+	        		else if (self.par != null){
+	        			$('#pageTwo').addClass('active');	
+	        			$('#pageOne').removeClass('active');
+
+	        			$('h2').hide();
+        				$('form').hide();
+        				$('#qrcode').show();
+	        		}	
+	        		else {
+	        			alert('请先完成起诉书的填写！');
+	        		}
+        		}
+        	});
+        });	
+
+    function utf16to8(str) {     
+	    var out, i, len, c;     
+	    out = "";     
+	    len = str.length;     
+	    for(i = 0; i < len; i++) {     
+	    c = str.charCodeAt(i);     
+	    if ((c >= 0x0001) && (c <= 0x007F)) {     
+	        out += str.charAt(i);     
+	    } else if (c > 0x07FF) {     
+	        out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));     
+	        out += String.fromCharCode(0x80 | ((c >>  6) & 0x3F));     
+	        out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));     
+	    } else {     
+	        out += String.fromCharCode(0xC0 | ((c >>  6) & 0x1F));     
+	        out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));     
+	    }     
+	    }     
+	    return out;     
+	} 
+	</script>
+
+</html>
