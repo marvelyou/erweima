@@ -5,9 +5,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-	<title>登录</title>
+	<title>六合法院</title>
 
-	<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
 </head>
 <body>
@@ -19,7 +19,11 @@
 				<li role="presentation" id="pageTwo" class=""><a>二维码</a></li>
 			</ul>
 
-			<div id="qrcode"></div>
+			<div id='erweima'>
+				<div id="qrcode"></div>
+				<img src="" class="img-responsive">
+			</div>
+			
 
 			<h2 class="page-header text-center">起诉书</h2>
 			
@@ -250,16 +254,18 @@
 		</div>
 	</div>
 </body>
-	<script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../assets/js/jquery.min.js"></script>
-	<script type="text/javascript" src="../assets/js/inputGroup.js"></script>
-	<script type="text/javascript" src="../assets/js/jquery.qrcode.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/inputGroup.js"></script>
+	<script type="text/javascript" src="js/jquery.qrcode.min.js"></script>
 
 	<script type="text/javascript">
 
 		self.par = null;
 
 		$(function() {
+
+			$('#qrcode').hide();
 
             $('.input-group-add').initInputGroup({
                 'widget' : 'textarea',
@@ -269,32 +275,57 @@
 
             $("form").submit(function(){
 
-        		keys = new Array('pName', 'pSex', 'pEthnic', 'pBirth', 'pIDNum', 'pPhone', 'pAddress',
-        				'dName', 'dSex', 'dEthnic', 'dBirth', 'dIDNum', 'dPhone', 'dAddress',
-        				'truthAndReason'
-        		);
+        		plaintiff = new Array('pName', 'pSex', 'pEthnic', 'pBirth', 'pIDNum', 'pPhone', 'pAddress')
+        		defendant = new Array('dName', 'dSex', 'dEthnic', 'dBirth', 'dIDNum', 'dPhone', 'dAddress')	
+        		truthAndReason = new Array('truthAndReason')
+
         		results = {};
-        		for (index in keys) {
-        			key = keys[index];
+        		
+        		pJson = {}
+        		for (pind in plaintiff) {
+        			key = plaintiff[pind];
         			val = $('#' + key).val();
-        			results[key] = val;
-        		};	
+        			pJson[key] = val;
+        		}
+        		results['plaintiff'] = pJson;
+
+        		dJson = {}
+        		for (dind in defendant) {
+        			key = defendant[dind];
+        			val = $('#' + key).val();
+        			dJson[key] = val;
+        		}
+        		results['defendant'] = dJson;
+
+        		tJson = {}
+        		for (tind in truthAndReason) {
+        			key = truthAndReason[tind];
+        			val = $('#' + key).val();
+        			tJson[key] = val
+        		}
+        		results['truthAndReason'] = tJson;
+
+        		cJson = {}
 				count = 0;
         		$('.claims').each(function(){
         			count += 1;
-        			results['claims' + count] = $(this).val();
+        			cJson['claims' + count] = $(this).val();
         		});
+        		results['claims'] = cJson;
 
         		self.par = JSON.stringify(results);
         		jQuery('#qrcode').qrcode(utf16to8(self.par));
+
+        		canvas = document.getElementsByTagName('canvas')[0];
+        		canvasImg = canvas.toDataURL('image/png');
+        		$('img').attr('src', canvasImg);
+
         		$('#pageTwo').addClass('active');	
     			$('#pageOne').removeClass('active');
 
         		$('h2').hide();
 				$('form').hide();
-				$('#qrcode').show();
-        		// url = encodeURI(encodeURI('./erweima.html?par=' + strResults));
-        		// location.href = url;        		
+				$('#erweima').show();     		
 
         	});	
 
@@ -307,7 +338,7 @@
 
 	        			$('h2').show();
         				$('form').show();
-        				$('#qrcode').hide();
+        				$('#erweima').hide();
 	        		}
 	        		else if (self.par != null){
 	        			$('#pageTwo').addClass('active');	
@@ -315,7 +346,7 @@
 
 	        			$('h2').hide();
         				$('form').hide();
-        				$('#qrcode').show();
+        				$('#erweima').show();
 	        		}	
 	        		else {
 	        			alert('请先完成起诉书的填写！');
